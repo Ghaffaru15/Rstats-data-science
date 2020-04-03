@@ -13,6 +13,12 @@ ggplot(
 ) + geom_bar() + ggtitle('Count of cars by Transmission Type') + ylab('Count of Cars')+ xlab('Transmisson Tye')
 
 
+cars$Cylinders <-  as.factor(cars$Cylinders)
+ggplot(
+  data = cars,
+  aes(x = Cylinders)
+) + geom_boxplot()
+
 # Histogram
 
 ggplot(
@@ -36,4 +42,5 @@ ggplot(
   data = cars,
   aes(x = Cylinders, y = Fuel.Economy)
 ) + 
-  geom_point()
+  geom_point() +
+  ggtitle('Scatter Plot')
