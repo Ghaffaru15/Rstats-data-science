@@ -3,6 +3,30 @@
 set.seed(42)
 
 
+# see the dimensions
+dim(iris)
+
+# number of rows
+nrow(iris)
+
+# number of columns
+ncol(iris)
+
+# Column names
+colnames(iris)
+
+names(iris)
+
+# Structure
+str(iris)
+
+table(iris$Species)
+
+# 
+head(iris, 10)
+
+summary(iris)
+
 # Randomly sample 100 of 150 row indexes
 indexes <- sample(x = 1:150, size = 100)
 
