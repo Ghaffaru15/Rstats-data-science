@@ -44,3 +44,35 @@ library(Amelia)
 
 missmap(train, main = 'Missing Map')
 AmeliaView()
+
+test_imp <- read.csv('test-imp1.csv')
+
+table(is.na(test_imp))
+
+# substiting missing values with the mean
+train$Age[is.na(train$Age)] <- mean(train$Age, na.rm = T)
+
+sum(is.na(train$Age))
+
+# replace with mode
+train$Embarked[is.na(train$Embarked)] <- 's'
+sum(is.na(train$Embarked))
+
+# Univariate Analysis
+str(train)
+
+# chi square test against two categorical
+chisq.test(train$Ticket, train$Cabin)
+
+install.packages('corrplot')
+
+library(corrplot)
+cor(train[, sapply(train, is.numeric)])
+
+corrplot(cor(train[, sapply(train, is.numeric)]), diag = T)
+
+?corrplot
+
+install.packages('e1071')
+
+install.packages('caTools')
