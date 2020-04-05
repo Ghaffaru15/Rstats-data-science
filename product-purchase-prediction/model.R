@@ -56,7 +56,7 @@ test_pred
 cm = table(test_set$Purchased, test_pred )
 cm
 
-# install.packages('caret')
+# install.packages('caret') 
 library(caret)
 confusionMatrix(cm)
 
