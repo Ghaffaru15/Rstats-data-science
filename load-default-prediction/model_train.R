@@ -26,15 +26,16 @@ nrow(train)
 nrow(test)
 
 library(e1071)
-
+library(rpart)
 colnames(loan)
 
 ?naiveBayes
-classifier <- svm(
+classifier <- randomForest(
   x = loan[-7],
-  y = loan$bad_loans
+  y = loan$bad_loans,
 )
 
+decisionTreeClassifier <- rpart(bad_loans ~ ., data = loan, method = 'class')
 test_pred <- predict(classifier, test[-7])
 
 # Create confusion matrix
@@ -44,3 +45,8 @@ library(caret)
 
 confusionMatrix(cm)
 
+plot(classifier)
+
+importance(classifier)
+
+varImpPlot(classifier)

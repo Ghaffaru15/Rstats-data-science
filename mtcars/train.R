@@ -14,7 +14,7 @@ sum(is.na(mtcars))
 # Split data
 library(caTools)
 
-split <- sample.split(Y = mtcars, SplitRatio = 0.8)
+split <- sample.split(Y = mtcars, SplitRatio = 0.9)
 
 train <- subset(x = mtcars, split == TRUE)
 
@@ -28,7 +28,7 @@ nrow(test)
 
 library(rpart) # recursive partitioning
 library(e1071)
-decisionTree <- rpart(am ~ . , data = mtcars, method = 'class')
+decisionTree <- rpart(am ~ . , data = train, method = 'class')
 
 test_pred <- predict(object = decisionTree, newdata = test, type = 'class')
 
